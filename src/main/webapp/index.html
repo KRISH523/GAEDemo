@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+    <head>
+        <title>App Engine Demo</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="get">Loading...</div>
+        <div id="put">Loading...</div>
+        <div id="post">Loading...</div>
+        <!--<div id="delete">Loading...</div>-->
+
+        <script>
+            $(document).ready(function () {
+                $.ajax({
+                    type: 'GET', // Use POST with X-HTTP-Method-Override or a straight PUT if appropriate.
+                    dataType: 'json', // Set datatype - affects Accept header
+                    url: "/demo", // A valid URL                    
+                    data: '{"name": "Dave"}' // Some data e.g. Valid JSON as a string,
+
+                }).done(function (data) {
+                    $('#get').html("Hello, " + data.name);
+                });
+                $.ajax({
+                    type: 'PUT', // Use POST with X-HTTP-Method-Override or a straight PUT if appropriate.
+                    dataType: 'json', // Set datatype - affects Accept header
+                    url: "/demo", // A valid URL                    
+                    data: '{"name": "Dave"}' // Some data e.g. Valid JSON as a string,
+
+                }).done(function (data) {
+                    $('#put').html("Hello, " + data.name);
+                });
+                $.ajax({
+                    type: 'POST', // Use POST with X-HTTP-Method-Override or a straight PUT if appropriate.
+                    dataType: 'json', // Set datatype - affects Accept header
+                    url: "/demo", // A valid URL                    
+                    data: '{"name": "Dave"}', // Some data e.g. Valid JSON as a string,
+
+                }).done(function (data) {
+                    $('#post').html("Hello, " + data.name);
+                });
+//                $.ajax({
+//                    type: 'DELETE', // Use POST with X-HTTP-Method-Override or a straight PUT if appropriate.
+//                    dataType: 'json', // Set datatype - affects Accept header
+//                    url: "/demo", // A valid URL                    
+//                    data: '{"name": "Dave"}', // Some data e.g. Valid JSON as a string,
+//
+//                }).done(function (data) {
+//                    $('#delete').html("Hello, " + data.name);
+//                });
+            });
+        </script>
+    </body>
+</html>
